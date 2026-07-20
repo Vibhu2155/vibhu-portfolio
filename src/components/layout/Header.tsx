@@ -38,6 +38,30 @@ export function Header() {
     }
   }, [menuOpen]);
 
+  // Mobile-only nav handler. While the menu is open the body has
+  // `overflow: hidden`, so the browser's native anchor jump is swallowed
+  // by the still-locked body. We prevent the default jump, close the menu,
+  // then scroll on the next frame — by which point React has committed the
+  // close and the scroll-lock cleanup above has restored body overflow.
+  // scroll-padding-top on <html> keeps the target below the fixed header.
+  const handleMobileNav = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    event.preventDefault();
+    setMenuOpen(false);
+    const target = document.querySelector(href);
+    if (!target) return;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const styles = getComputedStyle(document.documentElement);
+        const offset = parseFloat(styles.scrollPaddingTop) || 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      });
+    });
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -102,7 +126,7 @@ export function Header() {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => handleMobileNav(e, item.href)}
                   className="border-b border-line/60 py-3 text-sm text-graphite last:border-none hover:text-ink"
                 >
                   {item.label}
@@ -110,7 +134,7 @@ export function Header() {
               ))}
               <a
                 href="#contact"
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => handleMobileNav(e, "#contact")}
                 className="mt-4 inline-flex w-fit rounded-full border border-line px-4 py-2 text-sm font-medium text-ink"
               >
                 Let&apos;s talk

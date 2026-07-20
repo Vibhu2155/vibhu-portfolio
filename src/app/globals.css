@@ -9,6 +9,8 @@
 
   html {
     scroll-behavior: smooth;
+    /* Offset anchor jumps so section tops clear the fixed 64px header. */
+    scroll-padding-top: 5rem;
   }
 
   body {
