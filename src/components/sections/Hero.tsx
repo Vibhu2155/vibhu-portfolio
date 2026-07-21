@@ -53,10 +53,12 @@ export function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            className="text-5xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-[4rem]"
+            className="text-5xl font-bold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-[4rem]"
           >
             {profile.name}
-            <span className="block text-graphite">{profile.tagline}</span>
+            <span className="mt-3 block text-4xl font-medium leading-[1.15] text-graphite/90 sm:text-5xl lg:text-[3.5rem]">
+              {profile.tagline}
+            </span>
           </motion.h1>
 
           <motion.p
