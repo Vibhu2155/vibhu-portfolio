@@ -45,6 +45,47 @@ export const profile = {
     "Video Editing",
   ],
 
+  // Creative pursuits outside of engineering. Kept separate from `skills`
+  // (the technical/professional stack) on purpose — these are personal
+  // hobbies, not job skills.
+  hobbies: [
+    "Video editing",
+    "Color grading",
+    "Playing guitar for fun",
+    "Exploring AI",
+    "Building software projects",
+    "Learning cloud technologies",
+  ],
+
+  videoEditing: {
+    primaryTool: "DaVinci Resolve",
+    // Tools he has hands-on experience with beyond his primary one.
+    priorTools: ["Premiere Pro"],
+    enjoys: [
+      "Color grading",
+      "Cinematic edits",
+      "Short-form content",
+      "Motion-based storytelling",
+      "Learning advanced editing workflows",
+    ],
+    toolkit: [
+      "DaVinci Resolve",
+      "Color grading workflows",
+      "Motion graphics (basic)",
+      "Audio synchronization",
+      "Short-form editing",
+    ],
+    // Where he showcases color-grading experiments. No public handle/URL
+    // is on file yet, so the assistant mentions it by name but does NOT
+    // link to it — never fabricate a URL.
+    showcase: "Instagram",
+  },
+
+  music: {
+    instrument: "Guitar",
+    note: "plays for fun and relaxation alongside his technical interests",
+  },
+
   skills: {
     languages: ["Python", "TypeScript", "JavaScript", "SQL", "Java"],
     frameworks: ["React", "Next.js", "Node.js", "Tailwind CSS", "FastAPI"],
